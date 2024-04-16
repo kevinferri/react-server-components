@@ -71,9 +71,11 @@ function isNearBottom(
   padding = 120
 ) {
   const _ref = ref.current;
+  const threshold = 70;
+  const _padding = padding + threshold;
   if (!_ref) return;
 
-  return _ref.scrollHeight - _ref.scrollTop <= _ref.clientHeight + padding;
+  return _ref.scrollHeight - _ref.scrollTop <= _ref.clientHeight + _padding;
 }
 
 export function CurrentTopicProvider(props: Props) {
@@ -98,7 +100,7 @@ export function CurrentTopicProvider(props: Props) {
         if (isNearBottom(messagesListRef, padding) || force) {
           scrollRef?.current?.scrollIntoView({ block: "center" });
         }
-      }, timeout ?? 250);
+      }, timeout ?? 100);
     },
     []
   );
