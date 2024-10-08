@@ -17,42 +17,15 @@ export default async function HomePage() {
       topic: {
         select: {
           circleId: true,
-          parentCircle: {
-            select: {
-              id: true,
-              members: {
-                select: {
-                  id: true,
-                },
-              },
-            },
-          },
         },
       },
     },
   });
 
-  const isStillInCircle = mostRecentTopic?.topic.parentCircle.members.find(
-    ({ id }) => id === userId
-  );
-
-  if (
-    mostRecentTopic?.topicId &&
-    mostRecentTopic?.topic.circleId &&
-    isStillInCircle
-  ) {
+  if (mostRecentTopic?.topicId && mostRecentTopic?.topic.circleId) {
     redirect(
       `/circles/${mostRecentTopic.topic.circleId}/topics/${mostRecentTopic?.topicId}`
     );
-  }
-
-  if (mostRecentTopic && !isStillInCircle) {
-    prismaClient.topicHistory.deleteMany({
-      where: {
-        topicId: mostRecentTopic.id,
-        userId,
-      },
-    });
   }
 
   return (
