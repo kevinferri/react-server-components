@@ -15,7 +15,7 @@ export type UserStatsForTopicResponse = {
 };
 
 export async function GET(
-  req: Request,
+  _: Request,
   route: { params: { topicId: string; userId: string } }
 ) {
   const userId = await getLoggedInUserId();

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import og from "fetch-opengraph";
 import { getLoggedInUserId } from "@/lib/session";
 import { hydrateUrl, isValidUrl } from "@/lib/utils";
-import { badRequest } from "../error-responses";
+import { badRequest } from "@/app/api/error-responses";
 
 export type LinkMetadataResponse = {
   ogSiteName?: string;
