@@ -98,7 +98,7 @@ export function CurrentTopicProvider(props: Props) {
         if (isNearBottom(messagesListRef, padding) || force) {
           scrollRef?.current?.scrollIntoView({ block: "center" });
         }
-      }, timeout ?? 1);
+      }, timeout ?? 250);
     },
     []
   );
