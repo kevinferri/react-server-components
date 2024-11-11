@@ -385,11 +385,17 @@ export function CurrentTopicProvider(props: Props) {
     }
   );
 
+  const loadMoreUrl =
+    messages && messages.length > 0
+      ? `/api/topics/${props.topicId}/messages?before=${new Date(
+          messages[0].createdAt
+        ).toISOString()}`
+      : "";
+
   const { fetchData: loadMoreMessages, loading: loadingMoreMessages } =
     useLazyFetch<MessageProps[]>({
-      url: `/api/topics/${props.topicId}/messages?before=${new Date(
-        messages?.[0]?.createdAt
-      ).toISOString()}`,
+      url: loadMoreUrl,
+      skip: !loadMoreUrl,
       onSuccess: (newMessages) => {
         if (newMessages.length < props.messagesLimit) {
           setHasMoreMessages(false);
