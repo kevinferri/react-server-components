@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HomeIcon, QuestionMarkIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 
 export function NotFound({ copy }: { copy?: string }) {
   return (
@@ -12,7 +12,7 @@ export function NotFound({ copy }: { copy?: string }) {
 
       <div className="text-xl">{copy}</div>
 
-      <Link href={Routes.Home}>
+      <Link href={StaticRoutes.Home}>
         <Button variant="secondary" className="flex gap-3 text-lg font-normal">
           <HomeIcon /> Go home
         </Button>

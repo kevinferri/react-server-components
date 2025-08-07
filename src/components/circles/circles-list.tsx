@@ -22,7 +22,7 @@ import { ToastAction } from "@/components/ui/toast";
 import { useParams, useRouter } from "next/navigation";
 import { getInitials, UserAvatar } from "@/components/ui/user-avatar";
 import { useActiveCircleMembers } from "@/components/dashboard/active-circle-members-store";
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 
 type Props = {
   existingCircles?: Circle[];
@@ -124,7 +124,7 @@ export function CirclesList(props: Props) {
       });
 
       if (payload.id === params.circleId) {
-        router.push(Routes.Home);
+        router.push(StaticRoutes.Home);
       }
 
       router.refresh();

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 import { cn } from "@/lib/utils";
 import { SignIn } from "@/components/auth/signin";
 import { SignUp } from "@/components/auth/signup";
@@ -19,7 +18,7 @@ export default async function LogInPage({
   if (session) {
     const redirectTo = searchParams?.callbackUrl
       ? searchParams.callbackUrl
-      : Routes.Home;
+      : StaticRoutes.Home;
 
     return redirect(redirectTo);
   }
@@ -63,14 +62,14 @@ export default async function LogInPage({
             By clicking Create an account, you agree to our{" "}
             <Link
               className={cn("underline underline-offset-4 hover:text-primary")}
-              href={Routes.Terms}
+              href={StaticRoutes.Terms}
             >
               Terms of Service
             </Link>{" "}
             and{" "}
             <Link
               className={cn("underline underline-offset-4 hover:text-primary")}
-              href={Routes.Privacy}
+              href={StaticRoutes.Privacy}
             >
               Privacy Policy
             </Link>

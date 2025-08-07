@@ -1,4 +1,4 @@
-export enum Routes {
+export enum StaticRoutes {
   Home = "/",
   SignIn = "/signin",
   Terms = "/terms",

@@ -1,4 +1,4 @@
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "@/app/api/error-responses";
@@ -18,7 +18,9 @@ export function middleware(req: NextRequest) {
   }
 
   if (!sessionToken) {
-    return NextResponse.redirect(`${process.env.FRONTEND_URL}${Routes.SignIn}`);
+    return NextResponse.redirect(
+      `${process.env.FRONTEND_URL}${StaticRoutes.SignIn}`
+    );
   }
 
   headers.set("x-current-path", req.nextUrl.pathname);

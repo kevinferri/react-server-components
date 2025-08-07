@@ -1,6 +1,6 @@
-import { Routes } from "@/routes";
-import { UpsertCircleForm } from "@/components/circles/upsert-circle-form";
 import Link from "next/link";
+import { StaticRoutes } from "@/static-routes";
+import { UpsertCircleForm } from "@/components/circles/upsert-circle-form";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserDropDown } from "@/components/ui/user-dropdown";
@@ -16,7 +16,7 @@ export const CirclesNav = async ({ circles }: Props) => {
   return (
     <div className="flex flex-col border-r">
       <div className="flex flex-col items-center px-3 py-2">
-        <Link href={Routes.Home} className="hover:opacity-80">
+        <Link href={StaticRoutes.Home} className="hover:opacity-80">
           <Avatar className="h-8 w-8">
             <AvatarImage src="/assets/logo.svg" />
           </Avatar>

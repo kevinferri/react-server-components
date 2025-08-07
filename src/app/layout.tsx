@@ -12,7 +12,7 @@ import { CircleRoomConnect } from "@/components/dashboard/circle-room-connect";
 import { CirclesNav } from "@/components/circles/circles-nav";
 import { redirect } from "next/navigation";
 import { cookies, headers } from "next/headers";
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 
 import "@/globals.css";
 
@@ -124,8 +124,8 @@ export default async function RootLayout({
   const sessionToken = cookieStore.get(process.env.NEXTAUTH_COOKIE_KEY ?? "");
 
   // next-auth cookie in a bad state, sign out the user
-  if (!user && sessionToken?.value && pathname !== Routes.ForceSignout) {
-    redirect(Routes.ForceSignout);
+  if (!user && sessionToken?.value && pathname !== StaticRoutes.ForceSignout) {
+    redirect(StaticRoutes.ForceSignout);
   }
 
   if (!user) {

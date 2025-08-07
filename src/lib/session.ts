@@ -1,9 +1,8 @@
 import { AuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-
 import { prismaClient } from "@/lib/prisma/client";
 import { uploadImage } from "@/lib/cloudinary";
-import { Routes } from "@/routes";
+import { StaticRoutes } from "@/static-routes";
 
 export const authOptions: AuthOptions = {
   session: {
@@ -11,7 +10,7 @@ export const authOptions: AuthOptions = {
   },
 
   pages: {
-    signIn: Routes.SignIn,
+    signIn: StaticRoutes.SignIn,
   },
 
   providers: [
